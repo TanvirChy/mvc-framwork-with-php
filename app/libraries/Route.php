@@ -2,7 +2,7 @@
 
 class Route
 {
-    protected $defaultController = 'Page';
+    protected $defaultController = 'PageController';
     protected $defaultMethod = 'index';
     protected $params = [];
 
@@ -10,11 +10,11 @@ class Route
     public function  __construct()
     {
         $url = $this->getUrl();
-        PrintData($url);
+        
 
-        if ($url && file_exists('../app/controllers/' . ucwords($url[0]) . '.php')) {
+        if ($url && file_exists('../app/controllers/' . ucwords($url[0]) . 'Controller.php')) {
             // include_once '../app/controllers/' . ucwords($url[0]) . 'Controller.php' ;
-            $this->defaultController = ucwords($url[0]);
+            $this->defaultController = ucwords($url[0]). 'Controller';
             
             unset($url[0]);
         }

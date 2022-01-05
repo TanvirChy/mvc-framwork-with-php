@@ -1,10 +1,10 @@
 <?php
 
-    class Page{
+    class PageController{
 
         public function __construct()
         {
-            echo 'Constract Call from page  Controller';
+            echo 'Constract Call from page  Controller--------------------';
         }
 
         public function index(){
