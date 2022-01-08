@@ -1,17 +1,19 @@
 <?php
 
-class AboutController extends BaseController{
+class AboutController extends BaseController
+{
     public function __construct()
     {
-        echo 'about constructor';
     }
 
-    public function index(){
-        echo 'about controller index method';
+    public function index()
+    {
+        echo ' About INDEX';
     }
 
-    public function about(){
-        $data = ['title'=>'hello welcome to our about section .'];
-        $this->view('aboutView',$data);
+    public function about()
+    {
+        $data = ['title'=> 'hello this about view solved'];
+         $this->view('aboutView', $data);
     }
 }

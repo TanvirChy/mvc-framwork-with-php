@@ -1,1 +1,1 @@
-This is index view
+This is index view call from index method

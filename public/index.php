@@ -1,5 +1,5 @@
-<?php 
+<?php
 
-    include_once '../app/bootstrap.php';
+include_once '../app/bootstrap.php';
 
-    $route = new Route;
+$route = new Route;
