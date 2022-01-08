@@ -1,6 +1,6 @@
 <?php
 
-include_once '../app/config/Config.php';
+include_once '..' . DS . 'app' . DS . 'config' . DS . 'Config.php';
 
 class Database
 {

@@ -8,3 +8,4 @@ define('DB_HOST', 'localhost');
 
 define('DEFAULT_CONTROLLER','PageController'); 
 define('DEFAULT_METHOD','index');
+define( 'DEFAULT_LAYOUT' , 'layouts' );
