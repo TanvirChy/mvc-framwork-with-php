@@ -1,7 +1,5 @@
 <?php
 
-use App\Routes\Route;
-
 define('DS', DIRECTORY_SEPARATOR);
 define('ROOT', dirname(__FILE__));
 define('WEBROOT', 'http://localhost/ownMvc');
@@ -10,8 +8,14 @@ include_once '..' . DS . 'app' . DS . 'bootstrap.php';
 
 
 
-$route = new Route;
 
-
-//  http handler ...Curl
-//  seasion and cookie...
+  
+/**
+ * http handler (GET, POST)
+ * Session
+ * Cookies
+ * View()
+ * Route::get('/url', [ControllerName::class, 'method'])
+ * Route::post()
+ * User management (login, registration, udpate, delete, accessRole)
+ */

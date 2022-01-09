@@ -1,6 +1,5 @@
 <?php
 namespace App\Core;
-// include_once '..' . DS . 'app' . DS . 'libraries' . DS . 'View.php';
 
 use App\Core\View;
 

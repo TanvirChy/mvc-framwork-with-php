@@ -1,5 +1,4 @@
 <?php
-echo WEBROOT;
 
 function dd($data)
 {
@@ -9,22 +8,24 @@ function dd($data)
     exit;
 }
 
-if(!function_exists('public_path')) {
-    function public_path($path=null) {
-        if($path === null) return WEBROOT;
+if (!function_exists('public_path')) {
+    function public_path($path = null)
+    {
+        if ($path === null) return WEBROOT;
         else return WEBROOT . $path;
     }
 }
 
-if(!function_exists('css')) {
+if (!function_exists('css')) {
     function css($fileName)
     {
-       return public_path("/css/$fileName.css");
+        return public_path("/css/$fileName.css");
     }
 }
 
-if(!function_exists('js')){
-    function js($fileName){
+if (!function_exists('js')) {
+    function js($fileName)
+    {
         return public_path("/js/$fileName.js");
     }
 }

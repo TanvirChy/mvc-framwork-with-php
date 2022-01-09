@@ -13,7 +13,6 @@ class AboutController extends BaseController
 
     public function index()
     {
-
         echo 'This is about Controller index method.';
     }
 

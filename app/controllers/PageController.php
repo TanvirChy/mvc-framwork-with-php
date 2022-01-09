@@ -1,6 +1,4 @@
 <?php
-// include_once '../app/models/Users.php';
-
 // include_once '..' . DS . 'app' . DS . 'models' . DS . 'Users.php';
 
 use App\Core\BaseController;
