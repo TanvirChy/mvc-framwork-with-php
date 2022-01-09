@@ -1,7 +1,10 @@
 <?php
 // include_once '../app/models/Users.php';
 
-include_once '..' . DS . 'app' . DS . 'models' . DS . 'Users.php';
+// include_once '..' . DS . 'app' . DS . 'models' . DS . 'Users.php';
+
+use App\Core\BaseController;
+use App\Models\Users;
 
 class PageController extends BaseController
 {
@@ -12,7 +15,8 @@ class PageController extends BaseController
     public function __construct()
     {
         parent::__construct();
-        $this->userModel = $this->model('users');
+        // $this->userModel = $this->model('users');
+        $this->userModel = new Users();
     }
     public function index()
     {
@@ -22,7 +26,9 @@ class PageController extends BaseController
 
     public function users()
     {
-        $data =  $this->userModel->pageData();
-        $this->view->LoadView('pageView',$data);
+        $data =  $this->userModel->usersData();
+        $this->view->LoadView('pageView', $data);
     }
 }
+
+

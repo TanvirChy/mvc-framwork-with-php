@@ -1,12 +1,12 @@
 <?php
 
+namespace App\Core;
+
 class View
 {
     public $view, $_head, $_body, $_script, $_outBuffer, $_siteTitle, $_layout = DEFAULT_LAYOUT;
     public function LoadView($view, $data = [])
     {
-
-
         if (file_exists('..' . DS . 'app' . DS . 'views' . DS  . $view . '.php')) {
             require_once '..' . DS . 'app' . DS . 'views' . DS  . $view . '.php';
 

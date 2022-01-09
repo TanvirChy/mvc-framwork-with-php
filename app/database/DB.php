@@ -1,8 +1,9 @@
 <?php
 
-include_once '..' . DS . 'app' . DS . 'config' . DS . 'Config.php';
+namespace App\Database;
 
-class Database
+// include_once '..' . DS . 'app' . DS . 'config' . DS . 'Config.php';
+class DB
 {
 	private $dbConn;
 	public function __construct()
@@ -15,8 +16,8 @@ class Database
 		$dsn = "mysql:host=" . DB_HOST . ";dbname=" . DB_NAME;
 
 		try {
-			return  new PDO($dsn, DB_USER, DB_PASSWORD);
-		} catch (PDOException $e) {
+			return  new \PDO($dsn, DB_USER, DB_PASSWORD);
+		} catch (\PDOException $e) {
 			echo $e->getMessage();
 		}
 	}
@@ -32,6 +33,6 @@ class Database
 	{
 		$sql = "SELECT * FROM `{$tableName}` ;";
 		$fetchedInfo = $this->query($sql);
-		return $fetchedInfo->fetchAll(PDO::FETCH_OBJ);
+		return $fetchedInfo->fetchAll(\PDO::FETCH_OBJ);
 	}
 }

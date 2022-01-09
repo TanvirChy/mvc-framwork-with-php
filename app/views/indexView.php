@@ -12,6 +12,12 @@
 
 <h2>MVC Framework</h2>
 
+
+
+
+
+
+
 <footer>
 
 </footer>
@@ -23,4 +29,6 @@
 <script>
     // alert('This is warking!')
 </script>
+
+<script src="<?= js('main') ?>"></script>
 <?= $this->end() ?>

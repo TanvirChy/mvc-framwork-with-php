@@ -1,18 +1,16 @@
 <?php
+
+use App\Routes\Route;
+
 define('DS', DIRECTORY_SEPARATOR);
 define('ROOT', dirname(__FILE__));
+define('WEBROOT', 'http://localhost/ownMvc');
+
 include_once '..' . DS . 'app' . DS . 'bootstrap.php';
 
+
+
 $route = new Route;
-
-
-// $string = 'user/index';
-// $string = 'user.index';
-
-
-// gmabbas44@gmail.com
-// git : mdabbas-cse
-
 
 
 //  http handler ...Curl

@@ -1,5 +1,9 @@
 <?php
-include_once '..' . DS . 'app' . DS . 'config' . DS . 'config.php';
+
+namespace App\Routes;
+
+// include_once '..' . DS . 'app' . DS . 'config' . DS . 'config.php';
+
 class Route
 {
     protected $defaultController = DEFAULT_CONTROLLER;
@@ -9,18 +13,16 @@ class Route
     public function  __construct()
     {
         $url = $this->getUrl();
-     
 
         if ($url && file_exists('..' . DS . 'app' . DS . 'controllers' . DS . ucwords($url[0]) . 'Controller.php')) {
             $this->defaultController = ucwords($url[0]) . 'Controller';
-           
             unset($url[0]);
         }
         include_once '..' . DS . 'app' . DS . 'controllers' . DS .  $this->defaultController . '.php';
         $this->defaultController = new $this->defaultController;
         if (isset($url[1])) {
             if (method_exists($this->defaultController, $url[1])) {
-               
+
                 $this->defaultMethod = $url[1];
                 unset($url[1]);
             }
