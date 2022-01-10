@@ -19,14 +19,19 @@ class PageController extends BaseController
     }
     public function index()
     {
-
-        return $this->view->LoadView('indexView');
+        $data  = ['user', 'name'];
+        view('indexView', compact('data'));
     }
 
     public function users()
     {
         $users = $this->userModel->all();
         dd($users);
+
+
+        // $getDataFromServer = Http::get('https://jsonplaceholder.typicode.com/todos/');
+        // dd($getDataFromServer);
+
         // $data = [];
         // $getDataFromServer = Http::get('https://jsonplaceholder.typicode.com/todos/');
         // $data['getDataFromServer'] = json_decode($getDataFromServer);

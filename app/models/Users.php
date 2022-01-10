@@ -15,4 +15,3 @@ class Users extends BaseModel
     //     return $this->all();
     // }
 }
- 

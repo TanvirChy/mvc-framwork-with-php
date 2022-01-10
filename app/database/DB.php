@@ -23,12 +23,12 @@ class DB
 			echo $e->getMessage();
 		}
 	}
- 
+
 	public  function query($sql, $data = [])
 	{
 		$prepareSql = $this->dbConn->prepare($sql);
 		$prepareSql->execute($data);
-		// dd($prepareSql);
+
 		return $prepareSql;
 	}
 

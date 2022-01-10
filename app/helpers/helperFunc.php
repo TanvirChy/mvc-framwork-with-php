@@ -1,5 +1,7 @@
 <?php
 
+use App\Core\View;
+
 function dd($data)
 {
     echo '<pre>';
@@ -27,5 +29,12 @@ if (!function_exists('js')) {
     function js($fileName)
     {
         return public_path("/js/$fileName.js");
+    }
+}
+if (!function_exists('view')) {
+    function view($path, $data = [])
+    {
+        $view = new View();
+        return $view->LoadView($path, $data);
     }
 }

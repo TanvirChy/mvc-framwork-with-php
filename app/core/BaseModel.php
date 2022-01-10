@@ -15,6 +15,6 @@ class BaseModel extends DB
 
     public function all()
     {
-       return $this->fetchAllData($this->_tableName);
+        return $this->fetchAllData($this->_tableName);
     }
 }

@@ -20,6 +20,7 @@ class Route
         }
         include_once '..' . DS . 'app' . DS . 'controllers' . DS .  $this->defaultController . '.php';
         $this->defaultController = new $this->defaultController;
+
         if (isset($url[1])) {
             if (method_exists($this->defaultController, $url[1])) {
 
@@ -28,7 +29,6 @@ class Route
             }
         }
         $this->params = $url ? array_values($url) : [];
-
         call_user_func_array([$this->defaultController, $this->defaultMethod], $this->params);
     }
 
