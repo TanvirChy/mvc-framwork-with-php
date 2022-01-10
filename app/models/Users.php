@@ -1,13 +1,18 @@
 <?php
+
 namespace App\Models;
 
 use App\Core\BaseModel;
 
 class Users extends BaseModel
 {
-    private $_table = 'users';
-    public function usersData()
+    public function __construct()
     {
-        return $this->fetchAllData($this->_table);
+        parent::__construct('users');
     }
+    // public function allUser()
+    // {
+    //     return $this->all();
+    // }
 }
+ 

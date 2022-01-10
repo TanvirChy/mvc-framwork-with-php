@@ -2,6 +2,9 @@
 // include_once '..' . DS . 'app' . DS . 'models' . DS . 'Users.php';
 
 use App\Core\BaseController;
+use App\Core\BaseModel;
+use App\Database\DB;
+use App\Libraries\Http;
 use App\Models\Users;
 
 class PageController extends BaseController
@@ -12,8 +15,6 @@ class PageController extends BaseController
 
     public function __construct()
     {
-        parent::__construct();
-        // $this->userModel = $this->model('users');
         $this->userModel = new Users();
     }
     public function index()
@@ -24,9 +25,12 @@ class PageController extends BaseController
 
     public function users()
     {
-        $data =  $this->userModel->usersData();
-        $this->view->LoadView('pageView', $data);
+        $users = $this->userModel->all();
+        dd($users);
+        // $data = [];
+        // $getDataFromServer = Http::get('https://jsonplaceholder.typicode.com/todos/');
+        // $data['getDataFromServer'] = json_decode($getDataFromServer);
+
+        // $this->view->LoadView('pageView', $data);
     }
 }
-
-

@@ -18,7 +18,7 @@ class AboutController extends BaseController
 
     public function about()
     {
-        $data = ['title' => 'hello this about view solved'];
-        $this->view->LoadView('aboutView', $data);
+        // $data = ['title' => 'hello this about view solved'];
+        // $this->view->LoadView('aboutView', $data);
     }
 }

@@ -1,14 +1,3 @@
-<?php
-$students = [
-    ['name' => 'tanvir', 'id' => 'cse014'],
-    ['name' => 'sobuj', 'id' => 'cse015'],
-    ['name' => 'somir', 'id' => 'cse016']
-];
-
-
-
-?>
-
 <?= $this->setSiteTile('Index') ?>
 
 <?= $this->start('head') ?>
@@ -31,35 +20,31 @@ $students = [
 
 <?= $this->start('body') ?>
 <h2>Page View</h2>
-
 <h2>MVC Framework</h2>
-<ul>
-    <?php foreach ($data as $key => $value) : ?>
-        <li><?= $value->id ?></li>
-    <?php endforeach; ?>
-</ul>
+
 
 <table class="student-table">
     <tr>
-        <th>Name</th>
+        <th>USER ID</th>
         <th>ID</th>
-
+        <th>TITLE</th>
+        <th>COMPLETED</th>
     </tr>
 
-    <?php foreach ($students as $key => $value) : ?>
+    <?php foreach ($getDataFromServer as $user) : ?>
         <tr>
-            <td><?= $value['name'] ?> </td>
-            <td><?= $value['id'] ?></td>
+            <td><?= $user->userId ?></td>
+            <td><?= $user->id ?></td>
+            <td><?= $user->title ?></td>
+            <td><?= $user->completed ?></td>
         </tr>
     <?php endforeach; ?>
+
+
+
 </table>
 
-
-
-
-
 <?= $this->end() ?>
-
 
 <?= $this->start('script') ?>
 <script>
