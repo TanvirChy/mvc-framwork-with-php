@@ -10,8 +10,4 @@ class Users extends BaseModel
     {
         parent::__construct('users');
     }
-    // public function allUser()
-    // {
-    //     return $this->all();
-    // }
 }

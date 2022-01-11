@@ -14,9 +14,6 @@
 
 
 
-<?php var_dump($data) ?>
-
-
 
 <footer>
 

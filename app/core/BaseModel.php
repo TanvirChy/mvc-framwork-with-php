@@ -18,8 +18,8 @@ class BaseModel extends DB
         return $this->fetchAllData($this->_tableName);
     }
 
-    public function insertRegForm($data)
+    public function insertRegForm($tableName, $data)
     {
-        return $this->insert($data);
+        return $this->insert($tableName, $data);
     }
 }

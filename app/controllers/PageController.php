@@ -22,7 +22,6 @@ class PageController extends BaseController
         $data  = ['user', 'name'];
         view('indexView', compact('data'));
     }
-
     public function users()
     {
         $users = $this->userModel->all();
@@ -52,10 +51,8 @@ class PageController extends BaseController
         view('registrationView');
     }
 
-
     public function takeDataRegistration()
     {
-
         if (
             $_SERVER["REQUEST_METHOD"] == "POST" &&
             !empty($_POST['name']) &&
@@ -72,14 +69,18 @@ class PageController extends BaseController
             $password = $_POST['password'];
 
             $data = [
-                'name'=> $name,
+                'name' => $name,
                 'email' => $email,
                 'phone' => $phone,
                 'country' => $country,
                 'password' => $password
             ];
 
-            $this->userModel->insert($data);
+            $result = $this->userModel->insertRegForm('users', $data);
+
+            if ($result) {
+                redirectTo('/page/index');
+            }
 
             // echo $name;
             // echo $email;

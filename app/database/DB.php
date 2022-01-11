@@ -27,6 +27,7 @@ class DB
 	public  function query($sql, $data = [])
 	{
 		$prepareSql = $this->dbConn->prepare($sql);
+
 		$prepareSql->execute($data);
 
 		return $prepareSql;
@@ -34,20 +35,38 @@ class DB
 
 	public function fetchAllData($tableName)
 	{
-		
+
 		$sql = "SELECT * FROM `{$tableName}` ;";
 		$fetchedInfo = $this->query($sql);
 		return $fetchedInfo->fetchAll(PDO::FETCH_OBJ);
 	}
 
-	public function insert($data)
+	public function insert($tableName, $data)
 	{
-		dd($data);
-		$user_id = uniqid(); 
-		// INSERT INTO `users` (`id`, `user_id`, `name`, `email`, `password`) 
-		// VALUES (NULL, 'gdfsgsdgfd', 'abbas vai', 'abbas@bitcode.pro', '123');
-		$sql = "INSERT INTO `users` (`id`, `user_id`, `name`, `email`, `password`) 
-		VALUES (NULL , :user_id,:name,:email,:password)";
-		
+
+
+		// $sql = "INSERT INTO `users` (`id`, `user_id`, `name`, `email`, `phone`, `country`, `password`) 
+		// 		VALUES (NULL, 'fdgdsfgf', 'hasib', 'hasib@gmail.com', '01626974223', 'Bangladesh', '123')";
+
+		$sql = "INSERT INTO {$tableName} ";
+		$dataKeys = "";
+		$dataValue = "";
+		$trimDataKeys = '';
+		$trimDataValues = '';
+		$values = [];
+
+
+		foreach ($data as $key => $value) {
+			$dataKeys .= "`{$key}`,";
+			$dataValue .= ":{$key},";
+			$values[":{$key}"] = $value;
+		}
+
+		$trimDataKeys = rtrim($dataKeys, ',');
+		$trimDataValues = rtrim($dataValue, ',');
+
+		$finalSql = $sql . '(' . $trimDataKeys . ')' . ' VALUES ' . '(' .   $trimDataValues  . ')';
+
+		return $this->query($finalSql, $values);
 	}
 }
