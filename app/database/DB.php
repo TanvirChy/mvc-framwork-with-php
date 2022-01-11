@@ -34,9 +34,20 @@ class DB
 
 	public function fetchAllData($tableName)
 	{
-		echo $tableName;
+		
 		$sql = "SELECT * FROM `{$tableName}` ;";
 		$fetchedInfo = $this->query($sql);
 		return $fetchedInfo->fetchAll(PDO::FETCH_OBJ);
+	}
+
+	public function insert($data)
+	{
+		dd($data);
+		$user_id = uniqid(); 
+		// INSERT INTO `users` (`id`, `user_id`, `name`, `email`, `password`) 
+		// VALUES (NULL, 'gdfsgsdgfd', 'abbas vai', 'abbas@bitcode.pro', '123');
+		$sql = "INSERT INTO `users` (`id`, `user_id`, `name`, `email`, `password`) 
+		VALUES (NULL , :user_id,:name,:email,:password)";
+		
 	}
 }
