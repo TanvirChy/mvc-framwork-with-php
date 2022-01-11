@@ -43,11 +43,6 @@ class DB
 
 	public function insert($tableName, $data)
 	{
-
-
-		// $sql = "INSERT INTO `users` (`id`, `user_id`, `name`, `email`, `phone`, `country`, `password`) 
-		// 		VALUES (NULL, 'fdgdsfgf', 'hasib', 'hasib@gmail.com', '01626974223', 'Bangladesh', '123')";
-
 		$sql = "INSERT INTO {$tableName} ";
 		$dataKeys = "";
 		$dataValue = "";
@@ -55,18 +50,26 @@ class DB
 		$trimDataValues = '';
 		$values = [];
 
-
 		foreach ($data as $key => $value) {
 			$dataKeys .= "`{$key}`,";
 			$dataValue .= ":{$key},";
 			$values[":{$key}"] = $value;
 		}
-
 		$trimDataKeys = rtrim($dataKeys, ',');
 		$trimDataValues = rtrim($dataValue, ',');
-
 		$finalSql = $sql . '(' . $trimDataKeys . ')' . ' VALUES ' . '(' .   $trimDataValues  . ')';
 
 		return $this->query($finalSql, $values);
+	}
+
+	public function getUserSingleData($data){
+		// dd($data['email']);
+		$sql = "SELECT * FROM `users` WHERE email=:email";
+		$value = [
+			":email" => $data['email'],
+		];
+		$fetchedSignInfo = $this->query($sql,$value);
+		return $fetchedSignInfo->fetch(PDO::FETCH_OBJ);
+
 	}
 }

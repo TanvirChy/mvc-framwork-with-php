@@ -22,4 +22,9 @@ class BaseModel extends DB
     {
         return $this->insert($tableName, $data);
     }
+
+    public function loginData($data)
+    {
+        return $this->getUserSingleData($data);
+    }
 }

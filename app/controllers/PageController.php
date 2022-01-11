@@ -3,9 +3,6 @@
 
 use App\Core\BaseController;
 use App\Models\Users;
-// use App\Core\BaseModel;
-// use App\Database\DB;
-// use App\Libraries\Http;
 
 class PageController extends BaseController
 {
@@ -38,18 +35,9 @@ class PageController extends BaseController
     public function registration()
     {
 
-        // if (
-        //     isset($_POST) &&
-        //     !empty($_POST['name']) &&
-        //     !empty($_POST['email']) &&
-        //     !empty($_POST['phone']) &&
-        //     !empty($_POST['country']) &&
-        //     !empty($_POST['password'])
-        // ) {
-        //     echo $_POST('name');
-        // }
         view('registrationView');
     }
+
 
     public function takeDataRegistration()
     {
@@ -61,7 +49,6 @@ class PageController extends BaseController
             !empty($_POST['country']) &&
             !empty($_POST['password'])
         ) {
-            // collect value of input field
             $name = $_POST['name'];
             $email = $_POST['email'];
             $phone = $_POST['phone'];
@@ -81,12 +68,35 @@ class PageController extends BaseController
             if ($result) {
                 redirectTo('/page/index');
             }
+        }
+    }
 
-            // echo $name;
-            // echo $email;
-            // echo $phone;
-            // echo $country;
-            // echo $password;
+    // Login Part
+    public function login()
+    {
+        view('loginView');
+    }
+
+    public function takeDataLogin()
+    {
+        if (
+            $_SERVER["REQUEST_METHOD"] == "POST"
+            && !empty($_POST['email'])
+            && !empty($_POST['password'])
+        ) {
+            $email = $_POST['email'];
+            $password = $_POST['password'];
+
+            $data = [
+                'email' => $email,
+                'password' => $password,
+            ];
+
+            $result = $this->userModel->loginData($data);
+            // dd($result->password);
+            if($password === $result->password){
+                echo "Your are Sign In Now ";
+            }
         }
     }
 }

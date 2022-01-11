@@ -11,6 +11,7 @@ body,
 input {
   width: 200px;
   height: 30px;
+  padding: 5px;
 }
 .reg-container {
   width: 100%;
@@ -89,7 +90,7 @@ input {
 }
 /* .reg-field-input {
 } */
-.reg-cancel-btn {
+/* .reg-cancel-btn {
   width: 120px;
   height: 40px;
   margin: 10px;
@@ -98,6 +99,11 @@ input {
   outline: none;
   border: none;
   color: white;
+} */
+
+.btn{
+  display: flex;
+  align-self: flex-end;
 }
 .reg-fonfirm-btn {
   width: 120px;
@@ -108,4 +114,5 @@ input {
   outline: none;
   border: none;
   color: white;
+  border-radius: 10px;  
 }
