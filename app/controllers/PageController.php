@@ -3,6 +3,7 @@
 
 use App\Core\BaseController;
 use App\Models\Users;
+use App\Core\Session;
 
 class PageController extends BaseController
 {
@@ -93,9 +94,19 @@ class PageController extends BaseController
             ];
 
             $result = $this->userModel->loginData($data);
-            // dd($result->password);
-            if($password === $result->password){
+            // dd($result);
+            // if (session_status() == PHP_SESSION_NONE) {
+            //     echo 'session are not start yet';
+            //  }else{
+            //      echo 'session start already';
+            //  }
+            Session::set('currentUser', $result);
+            $sessionUser = Session::get('currentUser');
+            dd($sessionUser);
+            if ($password === $result->password) {
                 echo "Your are Sign In Now ";
+            } else {
+                echo 'Your are not registerd user, Please Register First.';
             }
         }
     }
