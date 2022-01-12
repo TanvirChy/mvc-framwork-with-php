@@ -10,9 +10,11 @@
 
 <?= $this->start('body') ?>
 
-<h2>MVC Framework</h2>
+<h2>User Management System With MVC Framework</h2>
 
-
+<p>Hello Mr. <?= $data['currentUserInfo']['name'] ?> . Welcome to Our User Management System. </p>
+    
+    <a href=<?= route('/page/profile')?> >GO PROFILE</a>
 
 
 <footer>

@@ -27,4 +27,13 @@ class BaseModel extends DB
     {
         return $this->getUserSingleData($data);
     }
+    public function insertUpdatedData($tableName,$data)
+    {
+        return $this->update($tableName,$data);
+    }
+
+    public function deleteUser($tableName,$id)
+    {
+        return $this->delete($tableName,$id);
+    }
 }

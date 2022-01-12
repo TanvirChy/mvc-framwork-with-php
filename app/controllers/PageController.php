@@ -17,7 +17,8 @@ class PageController extends BaseController
     }
     public function index()
     {
-        $data  = ['user', 'name'];
+        $currentUserInfo = Session::get('currentUser');
+        $data  = ['currentUserInfo'=> $currentUserInfo];
         view('indexView', compact('data'));
     }
     public function users()
@@ -35,7 +36,6 @@ class PageController extends BaseController
     }
     public function registration()
     {
-
         view('registrationView');
     }
 
@@ -94,20 +94,69 @@ class PageController extends BaseController
             ];
 
             $result = $this->userModel->loginData($data);
-            // dd($result);
-            // if (session_status() == PHP_SESSION_NONE) {
-            //     echo 'session are not start yet';
-            //  }else{
-            //      echo 'session start already';
-            //  }
-            Session::set('currentUser', $result);
-            $sessionUser = Session::get('currentUser');
-            dd($sessionUser);
+            
+            $currentUserData = [
+                'id' => $result->id,
+                'name' => $result->name,
+                'email' => $result->email,
+            ];
+            Session::set('currentUser', $currentUserData);
+            // $sessionUser = Session::get('currentUser');
+            // dd($sessionUser);
             if ($password === $result->password) {
-                echo "Your are Sign In Now ";
-            } else {
-                echo 'Your are not registerd user, Please Register First.';
+                redirectTo('/page/index');
             }
         }
+    }
+
+    public function profile()
+    {
+        view('profileView');
+    }
+
+    public function takeUpdateProfile()
+    {
+        if (
+            $_SERVER["REQUEST_METHOD"] == "POST" &&
+            !empty($_POST['name']) &&
+            !empty($_POST['email']) &&
+            !empty($_POST['phone']) &&
+            !empty($_POST['country']) &&
+            !empty($_POST['password'])
+        ) {
+            $name = $_POST['name'];
+            $email = $_POST['email'];
+            $phone = $_POST['phone'];
+            $country = $_POST['country'];
+            $password = $_POST['password'];
+
+            $currentUserId = Session::get('currentUser');
+            $data = [
+                'name' => $name,
+                'email' => $email,
+                'phone' => $phone,
+                'country' => $country,
+                'password' => $password,
+                'id' => $currentUserId['id']
+            ];
+
+            $result = $this->userModel->insertUpdatedData('users', $data);
+           
+        }
+        
+    }
+    public function takeDeleteUser()
+    {
+        // dd($_POST);
+        if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['delete']) ){
+            $id = Session::get('currentUser')['id'];
+            // dd($id);
+            $result = $this->userModel->deleteUser('users',$id);
+           
+        }
+        if($result){
+            redirectTo('/page/login');
+        }
+
     }
 }

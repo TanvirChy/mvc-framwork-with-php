@@ -90,26 +90,29 @@ input {
 }
 /* .reg-field-input {
 } */
-/* .reg-cancel-btn {
+.reg-cancel-btn {
   width: 120px;
   height: 40px;
   margin: 10px;
   padding: 10px;
-  background-color: rgba(50, 43, 87);
+  font-weight: bold;
+  background-color: rgba(13, 161, 161);
   outline: none;
   border: none;
   color: white;
-} */
+  border-radius: 10px;  
+}
 
-.btn{
+/* .btn{
   display: flex;
   align-self: flex-end;
-}
+} */
 .reg-fonfirm-btn {
   width: 120px;
   height: 40px;
   margin: 10px;
   padding: 10px;
+  font-weight: bold;
   background-color: rgba(13, 161, 161);
   outline: none;
   border: none;

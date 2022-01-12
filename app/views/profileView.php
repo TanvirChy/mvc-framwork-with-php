@@ -1,4 +1,4 @@
-<?= $this->setSiteTile('REGISTRATION') ?>
+<?= $this->setSiteTile('PROFILE') ?>
 
 <?= $this->start('head') ?>
 <style>
@@ -10,18 +10,23 @@
 
 <?= $this->start('body') ?>
 
+<h2>It's You About </h2>
+
 <div class="reg-container">
     <div class="main-content">
         <div class="reg-pic">
             <img class="reg-signup-img" src="<?= img_path('signup/signupPagePic.jpg') ?>" alt="">
+            <form action="<?php echo route('/page/takeDeleteUser') ?>" method="POST">
+                <button type="submit" name="delete">DELETE</button>
+            </form>
         </div>
         <div class="reg-form-part">
             <div class="reg-head">
-                <p class="reg-text">Registration</p>
-                <span class="reg-span">Click For Your Shoot.</span>
+                <p class="reg-text">PROFILE</p>
+                <span class="reg-span">You can update your profile.</span>
             </div>
             <div class="reg-input-form">
-                <form class="reg-form" action="<?= route('/page/takeDataRegistration') ?>" method="POST">
+                <form class="reg-form" action="<?= route('/page/takeUpdateProfile') ?>" method="POST">
                     <div class="reg-input-field">
                         <label class="reg-field-label" for="name">Name</label>
                         <input class="reg-field-input" type="text" name="name" placeholder="Name" required>
@@ -43,8 +48,8 @@
                         <input class="reg-field-input" type="password" name="password" placeholder="Password" required>
                     </div>
                     <div>
-                        <!-- <button class="reg-cancel-btn">CANCEL</button> -->
-                        <button type="submit" class="reg-fonfirm-btn">CONFIRM</button>
+                        <!-- <button class="reg-cancel-btn">DELETE</button> -->
+                        <button type="submit" class="reg-fonfirm-btn">UPDATE</button>
                     </div>
                 </form>
             </div>
@@ -52,6 +57,7 @@
         </div>
     </div>
 </div>
+
 
 <footer>
 

@@ -62,14 +62,43 @@ class DB
 		return $this->query($finalSql, $values);
 	}
 
-	public function getUserSingleData($data){
+	public function getUserSingleData($data)
+	{
 		// dd($data['email']);
 		$sql = "SELECT * FROM `users` WHERE email=:email";
 		$value = [
 			":email" => $data['email'],
 		];
-		$fetchedSignInfo = $this->query($sql,$value);
+		$fetchedSignInfo = $this->query($sql, $value);
 		return $fetchedSignInfo->fetch(PDO::FETCH_OBJ);
+	}
+	public function update($tableName, $data)
+	{
 
+		$sql = "UPDATE `{$tableName}` SET ";
+		$finalSql = '';
+		$id = array_pop($data);
+		$values = [];
+		foreach ($data as $key => $value) {
+			$sql .= "{$key} = :{$key}, ";
+			$values[":{$key}"] = $value;
+		}
+		$values[":id"] = $id;
+
+		$finalSql = rtrim($sql, ', ') . " WHERE  id = :id";
+		return $this->query($finalSql, $values);
+	}
+
+	public function delete($tableName, $id)
+	{
+		$sql = "DELETE FROM `{$tableName}` WHERE  `id` = :id";
+
+
+		$id = [
+			":id" => $id,
+		];
+
+
+		return $this->query($sql, $id);
 	}
 }

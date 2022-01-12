@@ -1,4 +1,4 @@
-<?= $this->setSiteTile('Registration') ?>
+<?= $this->setSiteTile('LOGIN') ?>
 
 <?= $this->start('head') ?>
 <style>
@@ -33,7 +33,7 @@
                         <input class="reg-field-input" type="password" name="password" placeholder="Password" required>
                     </div>
                     <div class="btn">
-                        <!-- <button class="reg-cancel-btn">CANCEL</button> -->
+                        
                         <button type="submit" class="reg-fonfirm-btn">CONFIRM</button>
                     </div>
                 </form>
