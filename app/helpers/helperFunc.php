@@ -1,6 +1,7 @@
 <?php
 
 use App\Core\View;
+use App\Libraries\DotEnv;
 
 function dd($data)
 {
@@ -13,8 +14,8 @@ function dd($data)
 if (!function_exists('public_path')) {
     function public_path($path = null)
     {
-        if ($path === null) return WEBROOT;
-        else return WEBROOT . $path;
+        if ($path === null) return APP_URL;
+        else return APP_URL . $path;
     }
 }
 
@@ -28,14 +29,14 @@ if (!function_exists('css')) {
 if (!function_exists('route')) {
     function route($url)
     {
-        return WEBROOT . $url;
+        return APP_URL . $url;
     }
 }
 
 if (!function_exists('redirectTo')) {
     function redirectTo($url)
     {
-        $path = WEBROOT . $url;
+        $path = APP_URL . $url;
         header("Location: $path");
     }
 }
@@ -60,5 +61,36 @@ if (!function_exists('view')) {
     {
         $view = new View();
         return $view->LoadView($path, $data);
+    }
+}
+
+
+
+if (!function_exists('envPath')) {
+    function envPath($path)
+    {
+        return DotEnv::setPath($path);
+    }
+}
+
+if (!function_exists('env')) {
+    function env($key)
+    {
+        return DotEnv::get_env($key);
+    }
+}
+
+if (!function_exists('setEnv')) {
+    function setEnv(...$arr)
+    {
+        // $args = func_get_args();
+        return DotEnv::set_env($arr[0]);
+    }
+}
+
+if (!function_exists('envUpdate')) {
+    function envUpdate($key, $val)
+    {
+        return DotEnv::update($key, $val);
     }
 }

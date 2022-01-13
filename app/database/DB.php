@@ -15,7 +15,7 @@ class DB
 
 	public function databaseConnection()
 	{
-		$dsn = "mysql:host=" . DB_HOST . ";dbname=" . DB_NAME;
+		$dsn = "mysql:host=" . DB_HOST . ":" . DB_PORT . ";dbname=" . DB_NAME;
 
 		try {
 			return  new PDO($dsn, DB_USER, DB_PASSWORD);
