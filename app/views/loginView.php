@@ -9,6 +9,18 @@
 <?= $this->end() ?>
 
 <?= $this->start('body') ?>
+<?php
+
+use App\Core\Session;
+
+if (Session::exits('notFoundUser')) {
+    $message = Session::get('notFoundUser');
+    Session::delete('notFoundUser');
+   
+} 
+// dd($message);
+?>
+
 
 <div class="reg-container">
     <div class="main-content">
@@ -18,7 +30,14 @@
         <div class="reg-form-part">
             <div class="reg-head">
                 <p class="reg-text">Sign In</p>
-                <span class="reg-span">Click For Your Shoot.</span>
+                <?php 
+                
+                if(isset($message)){ ?>
+                   <span> <?= $message  ?> </span>
+               <?php }
+                
+                ?>
+                
             </div>
             <div class="reg-input-form">
                 <form class="reg-form" action="<?= route('/page/takeDataLogin') ?>" method="POST">
@@ -33,7 +52,7 @@
                         <input class="reg-field-input" type="password" name="password" placeholder="Password" required>
                     </div>
                     <div class="btn">
-                        
+
                         <button type="submit" class="reg-fonfirm-btn">CONFIRM</button>
                     </div>
                 </form>

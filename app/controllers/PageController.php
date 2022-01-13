@@ -49,7 +49,7 @@ class PageController extends BaseController
             redirectTo('/page/index');
         }
     }
-
+ 
     public function takeDataRegistration()
     {
         if (
@@ -75,8 +75,6 @@ class PageController extends BaseController
             ];
 
             $result = $this->userModel->insertRegForm('users', $data);
-
-            
 
             if ($result ) {
                 $currentUserData = [
@@ -117,7 +115,6 @@ class PageController extends BaseController
                 'password' => $password,
             ];
 
-
             $result = $this->userModel->loginData($data);
             if ($result) {
                 $currentUserData = [
@@ -131,6 +128,9 @@ class PageController extends BaseController
                 }               
             }
             else{
+                Session::set('notFoundUser','There is no user');
+                // Session::set('loginTryTime', time());
+                // dd(Session::get('notFoundUser'));
                 redirectTo('/page/login');
             }
         }
