@@ -1,5 +1,4 @@
 <?php
-// include_once '..' . DS . 'app' . DS . 'models' . DS . 'Users.php';
 
 use App\Core\BaseController;
 use App\Models\Users;
@@ -10,7 +9,6 @@ class PageController extends BaseController
     protected $data;
     private $userModel;
 
-
     public function __construct()
     {
         $this->userModel = new Users();
@@ -18,11 +16,11 @@ class PageController extends BaseController
     public function index()
     {
         $currentUserInfo = Session::get('currentUser');
-        
-        if( $currentUserInfo != NULL){
+
+        if ($currentUserInfo != NULL) {
 
             view('indexView', compact('currentUserInfo'));
-        }else{
+        } else {
 
             redirectTo('/page/login');
         }
@@ -30,7 +28,7 @@ class PageController extends BaseController
     public function users()
     {
         $users = $this->userModel->all();
-       
+
 
         // $getDataFromServer = Http::get('https://jsonplaceholder.typicode.com/todos/');
         // dd($getDataFromServer);
@@ -43,13 +41,13 @@ class PageController extends BaseController
     public function registration()
     {
         $currentUser = Session::exits('currentUser');
-        if(!$currentUser){
+        if (!$currentUser) {
             view('registrationView');
-        }else{
+        } else {
             redirectTo('/page/index');
         }
     }
- 
+
     public function takeDataRegistration()
     {
         if (
@@ -76,7 +74,7 @@ class PageController extends BaseController
 
             $result = $this->userModel->insertRegForm('users', $data);
 
-            if ($result ) {
+            if ($result) {
                 $currentUserData = [
                     'id' => $result->id,
                     'name' => $result->name,
@@ -85,7 +83,6 @@ class PageController extends BaseController
                 Session::set('currentUser', $currentUserData);
                 redirectTo('/page/index');
             }
-            
         }
     }
 
@@ -93,9 +90,9 @@ class PageController extends BaseController
     public function login()
     {
         $currentUser = Session::exits('currentUser');
-        if(!$currentUser){
+        if (!$currentUser) {
             view('loginView');
-        }else{
+        } else {
             redirectTo('/page/index');
         }
     }
@@ -125,10 +122,9 @@ class PageController extends BaseController
                 Session::set('currentUser', $currentUserData);
                 if ($password === $result->password) {
                     redirectTo('/page/index');
-                }               
-            }
-            else{
-                Session::set('notFoundUser','There is no user');
+                }
+            } else {
+                Session::set('notFoundUser', 'There is no user');
                 // Session::set('loginTryTime', time());
                 // dd(Session::get('notFoundUser'));
                 redirectTo('/page/login');
@@ -172,10 +168,10 @@ class PageController extends BaseController
     }
     public function takeDeleteUser()
     {
-       
+
         if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['delete'])) {
             $id = Session::get('currentUser')['id'];
-           
+
             $result = $this->userModel->deleteUser('users', $id);
         }
         if ($result) {
