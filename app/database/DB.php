@@ -93,11 +93,9 @@ class DB
 	{
 		$sql = "DELETE FROM `{$tableName}` WHERE  `id` = :id";
 
-
 		$id = [
 			":id" => $id,
 		];
-
 
 		return $this->query($sql, $id);
 	}

@@ -16,12 +16,12 @@ class Session
 
     public static function set($name, $value)
     {
-        if (self::exits($name)) {
+        if (!self::exits($name)) {
             return $_SESSION[$name] = $value;
         }
     }
 
-    public function delete($name)
+    public static function delete($name)
     {
         if (self::exits($name)) {
             unset($_SESSION[$name]);

@@ -10,14 +10,13 @@
 
 <?= $this->start('body') ?>
 
-<h2>It's You About </h2>
 
 <div class="reg-container">
     <div class="main-content">
-        <div class="reg-pic">
-            <img class="reg-signup-img" src="<?= img_path('signup/signupPagePic.jpg') ?>" alt="">
-            <form action="<?php echo route('/page/takeDeleteUser') ?>" method="POST">
-                <button type="submit" name="delete">DELETE</button>
+        <div class="profile-page-pic">
+            <img class="profile-sign-img" src="<?= img_path('signup/signupPagePic.jpg') ?>" alt="">
+            <form action="<?php echo route('/page/takeDeleteUser') ?>" class="profile-page-form" method="POST">
+                <button type="submit" name="delete" class="profile-btn">DELETE</button>
             </form>
         </div>
         <div class="reg-form-part">
