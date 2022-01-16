@@ -16,11 +16,9 @@ use App\Core\Session;
 if (Session::exits('notFoundUser')) {
     $message = Session::get('notFoundUser');
     Session::delete('notFoundUser');
-   
-} 
-// dd($message);
-?>
+}
 
+?>
 
 <div class="reg-container">
     <div class="main-content">
@@ -30,14 +28,14 @@ if (Session::exits('notFoundUser')) {
         <div class="reg-form-part">
             <div class="reg-head">
                 <p class="reg-text">Sign In</p>
-                <?php 
-                
-                if(isset($message)){ ?>
-                   <span> <?= $message  ?> </span>
-               <?php }
-                
+                <?php
+
+                if (isset($message)) { ?>
+                    <span> <?= $message  ?> </span>
+                <?php }
+
                 ?>
-                
+
             </div>
             <div class="reg-input-form">
                 <form class="reg-form" action="<?= route('/page/takeDataLogin') ?>" method="POST">
